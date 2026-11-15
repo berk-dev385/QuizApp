@@ -62,3 +62,19 @@ let questions = [
         "right_answer": 2
     }
 ];
+
+
+let currentQuestion = 0; 
+
+function init(){
+    document.getElementById('all-questions').innerHTML = questions.length;
+
+    showQuestion();
+}
+
+
+function showQuestion(){
+    let question = questions[currentQuestion];
+
+    document.getElementById('questiontext').innerHTML = question ['question'];
+}
