@@ -60,5 +60,5 @@ let questions = [
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
         "right_answer": 2
-    },
-]
+    }
+];
