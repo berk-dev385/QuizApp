@@ -89,12 +89,17 @@ function answer(selection) {
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
     if (selectedQuestionNumber == question['right_answer']) {
-        console.log('Richtige Antwort');
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
-        console.log('Falsche Antwort!');   
-        document.getElementById(selection).parentNode.classList.add('bg-danger'); 
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); 
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
-    document.getElementById('next-button').disabled = false; 
+    document.getElementById('next-button').disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    showQuestion();
+
+    document.getElementById('next-button').disabled = true;
 }
