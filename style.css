@@ -27,3 +27,7 @@ body{
     background-color: rgba(79, 214, 16, 0.1);
     
 }
+
+.bg-success, .bg-danger {
+    color: yellow; 
+}

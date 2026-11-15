@@ -92,9 +92,9 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) {
         console.log('Richtige Antwort');
-        document.getElementById(selection).classList.add('bg-success');
+        document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
-        console.log('Falsche Antwort!');
-        document.getElementById(selection).classList.add('bg-danger');        
+        console.log('Falsche Antwort!');   
+        document.getElementById(selection).parentNode.classList.add('bg-danger'); 
     }
 }
