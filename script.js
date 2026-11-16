@@ -6,6 +6,7 @@ let questions = [
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
         "right_answer": 3
+        "image": "./assets/img/dalaman.jpg"
     },
 
     {
@@ -14,7 +15,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 1
+        "right_answer": 1,
+        "image": "./assets/img/frage-02.jpg"
     },
 
     {
@@ -23,7 +25,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 2
+        "right_answer": 2,
+        "image": "./assets/img/frage-03.jpg"
     },
 
     {
@@ -32,8 +35,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 4
-    },
+        "right_answer": 4,
+    },  "image": "./assets/img/frage-04.jpg"
 
     {
         "question": "Welcher Ort liegt in Asien ? ",
@@ -41,7 +44,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 3
+        "right_answer": 3,
+        "image": "./assets/img/frage-05.jpg"
     },
 
     {
@@ -50,7 +54,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 4
+        "right_answer": 4,
+        "image": "./assets/img/frage-06.jpg"
     },
 
     {
@@ -59,7 +64,8 @@ let questions = [
         "answer_2": "Marbella",
         "answer_3": "Dalaman",
         "answer_4": "Rio de Janeiro",
-        "right_answer": 2
+        "right_answer": 2,
+        "image": "./assets/img/frage-07.jpg"
     }
 ];
 
@@ -136,7 +142,7 @@ function answer(selection) {
 }
 
 function rightAnswerSelected(selectedQuestionNumber){
-    return selectedQuestionNumber == question['right_answer'];
+    return selectedQuestionNumber == questions[currentQuestion]['right_answer'];
 }
 
 function nextQuestion() {
