@@ -64,7 +64,6 @@ let questions = [
 ];
 
 let rightQuestion = 0;
-
 let currentQuestion = 0;
 
 function init() {
@@ -139,4 +138,15 @@ function resetAnswerButtons() {
     document.getElementById('answer_3').parentNode.classList.remove('bg-success');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+function restartQuiz() {
+    document.getElementById('header-image').src = './assets/img/dalaman.jpg';
+    document.getElementById('questionBody').style = '';
+    document.getElementById('endScreen').style = 'display: none';
+
+
+    rightQuestion = 0;
+    currentQuestion = 0;
+    init();
 }
