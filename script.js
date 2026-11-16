@@ -65,6 +65,8 @@ let questions = [
 
 let rightQuestion = 0;
 let currentQuestion = 0;
+let AUDIO_SUCCESS = new Audio('./assets/audio/positiv.wav');
+let AUDIO_FAIL = new Audio('./assets/audio/negative.wav');
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
@@ -113,10 +115,12 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) {  //Richtige Frage beantwortet
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         rightQuestion++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
 }
