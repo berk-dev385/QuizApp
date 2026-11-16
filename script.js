@@ -74,38 +74,48 @@ function init() {
     showQuestion();
 }
 
-
 function showQuestion() {
 
-    if (currentQuestion >= questions.length) {
-        //show end Screen
-        document.getElementById('endScreen').style = '';
-        document.getElementById('questionBody').style = 'display: none';
+    if (quizIsOver()) {
+        showEndScreen();
 
-        document.getElementById('amount-of-questions').innerHTML = questions.length;
-        document.getElementById('amount-of-right-questions').innerHTML = rightQuestion;
-        document.getElementById('header-image').src = 'assets/img/erfolg.png';
+    } else {
+        updateProgressBar();
+        updateToNextQuestion();
 
-    } else { // show question
-
-        let percent = (currentQuestion + 1) / questions.length;
-        percent = Math.round(percent * 100);
-
-
-        document.getElementById('progress-bar-id').innerHTML = `${percent} %`;
-        document.getElementById('progress-bar-id').style = `width: ${percent}%;`;
-
-        console.log('Fortschritt:', percent);
-
-        let question = questions[currentQuestion];
-
-        document.getElementById('question-number').innerHTML = currentQuestion + 1;
-        document.getElementById('questiontext').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
     }
+}
+
+function quizIsOver() {
+    return currentQuestion >= questions.length;
+}
+
+function showEndScreen() {
+
+    document.getElementById('endScreen').style = '';
+    document.getElementById('questionBody').style = 'display: none';
+
+    document.getElementById('amount-of-questions').innerHTML = questions.length;
+    document.getElementById('amount-of-right-questions').innerHTML = rightQuestion;
+    document.getElementById('header-image').src = 'assets/img/erfolg.png';
+}
+
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar-id').innerHTML = `${percent} %`;
+    document.getElementById('progress-bar-id').style = `width: ${percent}%;`;
+}
+
+
+function updateToNextQuestion() {
+    let question = questions[currentQuestion];
+    document.getElementById('question-number').innerHTML = currentQuestion + 1;
+    document.getElementById('questiontext').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
 function answer(selection) {
@@ -113,7 +123,7 @@ function answer(selection) {
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
-    if (selectedQuestionNumber == question['right_answer']) {  //Richtige Frage beantwortet
+    if (rightAnswerSelected(selectedQuestionNumber)) {  //Richtige Frage beantwortet
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
         rightQuestion++;
@@ -123,6 +133,10 @@ function answer(selection) {
         AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
+}
+
+function rightAnswerSelected(selectedQuestionNumber){
+    return selectedQuestionNumber == question['right_answer'];
 }
 
 function nextQuestion() {
