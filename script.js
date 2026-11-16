@@ -63,6 +63,7 @@ let questions = [
     }
 ];
 
+let rightQuestion = 0;
 
 let currentQuestion = 0;
 
@@ -79,6 +80,10 @@ function showQuestion() {
 
         document.getElementById('endScreen').style = '';
         document.getElementById('questionBody').style = 'display: none';
+
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('amount-of-right-questions').innerHTML = rightQuestion;
+        document.getElementById('header-image').src ='assets/img/erfolg.png';        
 
     } else {
 
@@ -99,8 +104,9 @@ function answer(selection) {
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
-    if (selectedQuestionNumber == question['right_answer']) {
+    if (selectedQuestionNumber == question['right_answer']) {  //Richtige Frage beantwortet
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestion++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
